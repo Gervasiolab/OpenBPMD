@@ -1,0 +1,16 @@
+#!/bin/env bash
+#SBATCH -J openbpmd_test
+#SBATCH -e %j.e
+#SBATCH -o %j.o
+#SBATCH -n 1
+#SBATCH -c 1
+#SBATCH -p private-gervasio-gpu
+#SBATCH -t 12:00:00
+#SBATCH --gres=gpu:rtx:1
+export OMP_NUM_THREADS=1
+
+source /home/users/l/lukauski/.bashrc
+
+conda activate openbpmd
+
+python openbpmd.py -lig_resname UNK 
