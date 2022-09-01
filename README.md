@@ -17,11 +17,7 @@ conda install -c conda-forge mdtraj
 conda install -c conda-forge parmed
 ```
 
-<<<<<<< HEAD
 Once the dependencies have been installed, running OpenBPMD involves simply running one of the Python scripts. Have a look at the ```examples/``` directory for further instructions on how to run and analyse the OpenBPMD results.
-=======
-Once the dependencies have been installed, running OpenBPMD involves simply running one of the Python scripts. Have a look at the ```examples/``` directory for further instructions on how to run and analyse the OpenBPMD results.
->>>>>>> refs/remotes/origin/main
 
 ### Citing OpenBPMD
 
