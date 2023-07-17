@@ -18,7 +18,7 @@ If you type ```python ../openbpmd.py -h```, you should see a description that fo
 
 As an example, if we want to run a BPMD simulation using gromacs format files, for 5 repeats, where the ligand's residue name is 'LIG', writing the files into a directory called 'ligand0_pose0', the CLI command will look like this:
 
-```python openbpmd.py -s gmx.gro -p gmx.top -o ligand0_pose0 -lig_resname LIG -nreps 5```
+```python openbpmd.py -s gmx.gro -p gmx.top -o ligand0_pose0 -lig_resname MOL -nreps 5```
 
 ## Analysis
 

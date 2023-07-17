@@ -21,7 +21,10 @@ descriptn = \
 from simtk.openmm import *
 from simtk.openmm.app import *
 from simtk.unit import *
-from simtk.openmm.app.metadynamics import *
+try:
+    from simtk.openmm.app.metadynamics import *
+except:
+    from openmm.app.metadynamics import *
 
 # The rest
 import argparse
@@ -397,18 +400,18 @@ def produce(out_dir, idx, lig_resname, eq_pdb, parm, parm_file,
     # ... finding the protein's COM ...
     prot_com = universe.select_atoms('protein').center_of_mass()
     x, y, z = prot_com[0], prot_com[1], prot_com[2]
-    # ... and taking the heavy backbone atoms within 5A of the COM
-    sel_str = f'point {x} {y} {z} 5 and backbone and not name H*'
+    # ... and taking the heavy backbone atoms within 10A of the COM
+    sel_str = f'point {x} {y} {z} 10 and backbone and not name H*'
     anchor_atoms = universe.select_atoms(sel_str)
-    # ... or 10 angstrom
     if len(anchor_atoms) == 0:
-        sel_str = f'point {x} {y} {z} 10 and backbone and not name H*'
-        anchor_atoms = universe.select_atoms(sel_str)
-
+        raise ValueError('No Calpha atoms found within 10 ang of the center of mass of the protein. \
+                Check your input files.')
     anchor_atom_idx = anchor_atoms.indices.tolist()
 
     # Get indices of ligand heavy atoms
     lig = universe.select_atoms(f'resname {lig_resname} and not name H*')
+    if len(lig) == 0:
+        raise ValueError(f"Ligand with resname '{lig_resname}' not found.")
 
     lig_ha_idx = lig.indices.tolist()
 
