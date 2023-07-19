@@ -11,7 +11,7 @@ The dependencies needed for running the scripts can be installed with conda:
 conda create -n openbpmd
 conda activate openbpmd
 
-conda install -c conda-forge -c omnia openmm=7.4.2
+conda install -c conda-forge -c omnia openmm
 conda install -c conda-forge mdanalysis
 conda install -c conda-forge mdtraj
 conda install -c conda-forge parmed
